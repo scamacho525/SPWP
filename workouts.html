@@ -1,116 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        textarea {
-          height: 28px;
-          width: 400px;
-}
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				--theme-primary: #0f243f;
+				--theme-primary-dark: #0a1a2e;
+				--theme-accent: #f05540;
+				--theme-text: white;
+				--theme-neutral: rgb(246, 248, 250);
 
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+					'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+				margin: 0px;
+				background-color: var(--theme-neutral);
+			}
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-                'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            margin: 0px;
-        }
+			.nav {
+				position: sticky;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				background-color: #001329;
+				justify-content: space-evenly;
+				color: white;
+			}
 
-        .nav {
-            position: sticky;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            background-color: #001329;
-            justify-content: space-evenly;
-            color: white;
-        }
+			.nav > h1 {
+				margin: 0;
+			}
 
-        .nav > h1 {
-            margin: 0;
-        }
+			.nav-container {
+				max-width: 1140px;
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+			}
 
-        .nav-container {
-            max-width: 1140px;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-        }
+			.link {
+				cursor: pointer;
+				padding: 8px;
+				color: white;
+			}
 
+			.link a {
+				text-decoration: none;
+				color: inherit;
+				font-weight: 400;
+			}
 
-        .link {
-            cursor: pointer;
-            padding: 8px;
-            color: white;
-        }
+			.link a:visited {
+				text-decoration: none;
+			}
 
-        .link a {
-            text-decoration: none;
-            color: inherit;
-            font-weight: 400;
-        }
+			.link-active {
+				color: #eb0404;
+				text-shadow: 0px 0px 4px #ec3535;
+			}
 
-        .link a:visited {
-            text-decoration: none;
-        }
+			.logo {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 80px;
+				height: 80px;
+				z-index: 1;
+				border-radius: 50%;
+			}
 
-        .link-active {
-            color: #eb0404;
-            text-shadow: 0px 0px 4px #ec3535;
-        }
-        .logo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 80px;
-            height: 80px;
-            z-index: 1;
-            border-radius: 50%;
-        }   
+			#top-bar {
+				position: relative;
+			}
+		</style>
+		<style>
+			.tier-container {
+				display: flex;
+				flex-direction: column;
+			}
 
-        #top-bar {
-            position: relative;
-        }
-    </style>
-</head>
-<body>
-    <div id="top-bar">
-        <img class="logo" src="https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/1916086_202653352583_4240749_n.jpg?_nc_cat=108&_nc_sid=09cbfe&_nc_ohc=Ur16CfpXl7YAX8hJqwY&_nc_ht=scontent.fmkc1-1.fna&oh=3f599a411e1620aacce2c115410ea3a1&oe=5F709DE2"/>
-        <div class="nav">
-            <h1>South Platte Wellness Program</h1>
-        </div>
-        <div class="nav">
-            <div class="nav-container">
-                <div class="link">
-                    <a href="./index.html">
-                        Home
-                    </a>
-                </div>
-                <div class="link link-active">
-                    <a href="workouts.html">
-                        Workouts
-                    </a>
-                </div>
-                <div class="link">
-                    <a href="progress.html">
-                        Progress
-                    </a>
-                </div>
-                <div class="link">
-                        <a href="./exercises.html">
-                            Exercises
-                        </a>
-                </div>
-            </div>
-        </div>
-    </div>
-<div>Workouts</div>
-<h1>Advanced Workout</h1>
-<textarea>Enter Workout</textarea>
-<h1>Intermediate Workout</h1>
-<textarea>Enter Workout</textarea>
-<h1>Beginners workout</h1>
-<textarea>Enter workout</textarea>
-	</div>
-</body>
+			.workout-card {
+				border: 1px solid #e1e4e8;
+				background-color: white;
+				margin: 6px auto;
+				width: 70%;
+				max-width: 866px;
+				box-sizing: border-box;
+				padding: 8px;
+				border-radius: 6px;
+			}
+
+			.workout-card input[type='text'] {
+				resize: none;
+				width: 100%;
+				box-sizing: border-box;
+				border: 1px solid #abaeb1;
+				border-radius: 2px;
+				font-size: 14px;
+				padding: 4px;
+			}
+			.workout-card input[type='text']:focus {
+				border: 1px solid #838383;
+				box-shadow: 0 0 0 1px #8d8d8d;
+				outline: none;
+			}
+
+			.workout-card h1 {
+				border-bottom: 1px solid #e1e4e8;
+				margin: 4px 0;
+				padding-left: 8px;
+			}
+
+			.workout-card p {
+				font-size: 14px;
+				font-weight: bold;
+				padding-left: 8px;
+			}
+
+			.workout-card button {
+				height: 32px;
+				width: 66px;
+
+				border-radius: 6px;
+				border: 2px solid #e1e4e8;
+			}
+
+			.workout-card button:enabled {
+				cursor: pointer;
+			}
+
+			.workout-card button:enabled:hover {
+				border: 2px solid #a7a8aa;
+			}
+
+			.workout-card-align {
+				text-align: right;
+			}
+
+			.loading-indicator {
+				display: block;
+				border: 5px solid #f3f3f3;
+				border-top: 5px solid rgb(153, 153, 153);
+				border-radius: 50%;
+				animation: spin 2s linear infinite;
+				height: 12px;
+				width: 12px;
+				margin: auto;
+			}
+
+			@keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+
+			@-webkit-keyframes spin {
+				0% {
+					-webkit-transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+				}
+			}
+
+			li + li {
+				margin: 6px 0;
+				margin-right: 12px;
+			}
+
+			li {
+				margin-right: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="top-bar">
+			<img
+				class="logo"
+				src="https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/1916086_202653352583_4240749_n.jpg?_nc_cat=108&_nc_sid=09cbfe&_nc_ohc=Ur16CfpXl7YAX8hJqwY&_nc_ht=scontent.fmkc1-1.fna&oh=3f599a411e1620aacce2c115410ea3a1&oe=5F709DE2"
+			/>
+			<div class="nav">
+				<h1>South Platte Wellness Program</h1>
+			</div>
+			<div class="nav">
+				<div class="nav-container">
+					<div class="link">
+						<a href="./index.html"> Home </a>
+					</div>
+					<div class="link link-active">
+						<a href="workouts.html"> Workouts </a>
+					</div>
+					<div class="link">
+						<a href="progress.html"> Progress </a>
+					</div>
+					<div class="link">
+						<a href="./exercises.html"> Exercises </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tier-container">
+			<div class="workout-card">
+				<h1>Advanced Workout</h1>
+				<p>Fill in the advanced workouts you did today:</p>
+				<ol>
+					<li>
+						<input type="text" />
+					</li>
+					<li>
+						<input type="text" />
+					</li>
+					<li>
+						<input type="text" />
+					</li>
+				</ol>
+			</div>
+			<div class="workout-card">
+				<h1>Intermediate Workout</h1>
+				<p>Fill in the intermediate workouts you did today:</p>
+				<ol>
+					<li>
+						<input type="text" />
+					</li>
+					<li>
+						<input type="text" />
+					</li>
+					<li>
+						<input type="text" />
+					</li>
+				</ol>
+			</div>
+			<div class="workout-card">
+				<h1>Beginner workout</h1>
+				<p>Fill in the beginner workouts you did today:</p>
+				<ol>
+					<li>
+						<input type="text" />
+					</li>
+					<li>
+						<input type="text" />
+					</li>
+					<li>
+						<input type="text" />
+					</li>
+				</ol>
+			</div>
+			<div class="workout-card">
+				<div class="workout-card-align">
+					<button id="submit-button">Submit</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var submitButton = document.getElementById('submit-button');
+		submitButton.onclick = function (e) {
+			submitButton.disabled = true;
+			submitButton.innerHTML = '';
+
+			var spinner = document.createElement('span');
+			spinner.className = 'loading-indicator';
+			submitButton.appendChild(spinner);
+
+			setTimeout(function () {
+				submitButton.disabled = false;
+				submitButton.innerHTML = 'Submit';
+			}, 2000);
+		};
+	</script>
+</html>
