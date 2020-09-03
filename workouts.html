@@ -61,13 +61,30 @@
 			}
 
 			.logo {
+				--border: 3px;
+				top: var(--border);
+				left: var(--border);
+				width: 90px;
+				height: 90px;
 				position: absolute;
-				top: 0;
-				left: 0;
-				width: 80px;
-				height: 80px;
 				z-index: 1;
 				border-radius: 50%;
+				overflow: hidden;
+			}
+
+			.logo-border {
+				position: absolute;
+				border-radius: 50%;
+				width: 96px;
+				height: 96px;
+				background-color: var(--theme-primary);
+			}
+
+			.logo img {
+				position: absolute;
+				border-radius: 50%;
+				width: 90px;
+				height: 90px;
 			}
 
 			#top-bar {
@@ -179,10 +196,12 @@
 	</head>
 	<body>
 		<div id="top-bar">
-			<img
-				class="logo"
-				src="https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/1916086_202653352583_4240749_n.jpg?_nc_cat=108&_nc_sid=09cbfe&_nc_ohc=Ur16CfpXl7YAX8hJqwY&_nc_ht=scontent.fmkc1-1.fna&oh=3f599a411e1620aacce2c115410ea3a1&oe=5F709DE2"
-			/>
+			<div class="logo-border"></div>
+			<div class="logo">
+				<img
+					src="https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/1916086_202653352583_4240749_n.jpg?_nc_cat=108&_nc_sid=09cbfe&_nc_ohc=Ur16CfpXl7YAX8hJqwY&_nc_ht=scontent.fmkc1-1.fna&oh=3f599a411e1620aacce2c115410ea3a1&oe=5F709DE2"
+				/>
+			</div>
 			<div class="nav">
 				<h1>South Platte Wellness Program</h1>
 			</div>
